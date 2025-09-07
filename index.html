@@ -1,0 +1,1704 @@
+ <!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PROPAGANDA AGENCY</title>
+<link rel="icon" type="image/x-icon" href="propaganda.jpg">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+:root {
+--dark-purple: #0f011a;
+--deep-purple: #1a0529;
+--medium-purple: #2d0b4d;
+--accent-purple: #4a1b8c;
+--vibrant-purple: #6a2cbe;
+--light-purple: #8d5ee3;
+--lighter-purple: #b392f0;
+--neon-purple: #c0a3ff;
+--text-color: #ffffff;
+--light-text: #e2d9f3;
+--gradient: linear-gradient(135deg, var(--vibrant-purple), var(--accent-purple));
+--gradient-light: linear-gradient(135deg, var(--light-purple), var(--vibrant-purple));
+}
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+font-family: 'Poppins', 'Arial', sans-serif;
+}
+body {
+background-color: var(--dark-purple);
+color: var(--text-color);
+line-height: 1.6;
+overflow-x: hidden;
+background-image:
+radial-gradient(circle at 10% 20%, rgba(74, 27, 140, 0.15) 0%, transparent 20%),
+radial-gradient(circle at 90% 60%, rgba(106, 44, 190, 0.1) 0%, transparent 25%);
+min-height: 100vh;
+}
+.apply-button {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+background: var(--gradient);
+color: var(--text-color);
+padding: 12px 25px;
+border-radius: 50px;
+text-decoration: none;
+font-weight: 600;
+font-size: 1rem;
+transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+box-shadow: 0 5px 25px rgba(106, 44, 190, 0.4);
+position: relative;
+overflow: hidden;
+}
+.apply-button:hover {
+transform: translateY(-3px) scale(1.05);
+box-shadow: 0 8px 25px rgba(106, 44, 190, 0.6);
+}
+.apply-button::before {
+content: '';
+position: absolute;
+top: 0;
+left: -100%;
+width: 100%;
+height: 100%;
+background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+animation: shine 2s infinite;
+}
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+.apply-button {
+padding: 10px 20px;
+font-size: 0.9rem;
+}
+}
+.header-content {
+display: flex;
+justify-content: space-between;
+align-items: center;
+flex-wrap: wrap;
+}
+.header-right {
+display: flex;
+align-items: center;
+gap: 20px;
+}
+/* Добавляем медиа-запрос для мобильных устройств */
+@media (max-width: 768px) {
+.header-content {
+flex-direction: column;
+gap: 20px;
+}
+.header-right {
+width: 100%;
+justify-content: center;
+flex-wrap: wrap;
+}
+}
+/* Боковая навигация */
+.side-nav {
+position: fixed;
+left: 20px;
+top: 50%;
+transform: translateY(-50%);
+z-index: 1000;
+background: rgba(45, 11, 77, 0.8);
+backdrop-filter: blur(10px);
+border-radius: 20px;
+padding: 15px 10px;
+box-shadow: 0 0 30px rgba(142, 94, 227, 0.3);
+display: flex;
+flex-direction: column;
+gap: 15px;
+}
+.nav-item {
+position: relative;
+width: 50px;
+height: 50px;
+display: flex;
+align-items: center;
+justify-content: center;
+border-radius: 50%;
+background: var(--gradient);
+color: var(--text-color);
+font-size: 20px;
+transition: all 0.3s ease;
+cursor: pointer;
+}
+.nav-item:hover {
+transform: translateY(-5px) scale(1.1);
+box-shadow: 0 5px 15px rgba(142, 94, 227, 0.5);
+}
+.nav-item.active {
+background: var(--light-purple);
+box-shadow: 0 0 15px var(--light-purple);
+}
+.nav-tooltip {
+position: absolute;
+left: 60px;
+background: rgba(45, 11, 77, 0.9);
+padding: 8px 15px;
+border-radius: 10px;
+font-size: 14px;
+white-space: nowrap;
+opacity: 0;
+pointer-events: none;
+transition: opacity 0.3s ease;
+}
+.nav-item:hover .nav-tooltip {
+opacity: 1;
+}
+.container {
+max-width: 1200px;
+margin: 0 auto;
+padding: 0 40px;
+}
+header {
+padding: 30px 0;
+}
+.header-content {
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+.logo {
+font-size: 32px;
+font-weight: 800;
+color: var(--text-color);
+text-decoration: none;
+background: var(--gradient);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+position: relative;
+padding-left: 15px;
+transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.logo:hover {
+transform: translateY(-2px);
+text-shadow: 0 5px 15px rgba(142, 94, 227, 0.4);
+}
+.cta-button, .social-button, .watch-button {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+gap: 10px;
+background: var(--gradient);
+color: var(--text-color);
+padding: 18px 45px;
+border-radius: 50px;
+text-decoration: none;
+font-weight: 600;
+font-size: 1.1rem;
+transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+box-shadow: 0 5px 25px rgba(106, 44, 190, 0.4);
+position: relative;
+overflow: hidden;
+border: none;
+cursor: pointer;
+}
+.social-button, .watch-button {
+padding: 15px 30px;
+}
+.cta-button:hover, .social-button:hover, .watch-button:hover {
+transform: translateY(-5px) scale(1.05);
+box-shadow: 0 10px 30px rgba(106, 44, 190, 0.8);
+}
+.cta-button::before, .social-button::before, .watch-button::before {
+content: '';
+position: absolute;
+top: 0;
+left: -100%;
+width: 100%;
+height: 100%;
+background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+animation: shine 2s infinite;
+}
+.social-link {
+display: flex;
+align-items: center;
+justify-content: center;
+width: 60px;
+height: 60px;
+background: var(--gradient);
+border-radius: 50%;
+color: var(--text-color);
+font-size: 1.5rem;
+text-decoration: none;
+transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+position: relative;
+overflow: hidden;
+}
+.social-link:hover {
+transform: translateY(-5px) rotate(5deg) scale(1.1);
+box-shadow: 0 8px 20px rgba(106, 44, 190, 0.6);
+}
+.social-link::before {
+content: '';
+position: absolute;
+top: 0;
+left: -100%;
+width: 100%;
+height: 100%;
+background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+animation: shine 2s infinite;
+}
+.cta-button, .social-button, .social-link, .watch-button {
+transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+}
+.cta-button:hover, .social-button:hover, .watch-button:hover {
+transform: translateY(-5px) scale(1.05) !important;
+box-shadow: 0 10px 30px rgba(106, 44, 190, 0.8) !important;
+}
+.social-link:hover {
+transform: translateY(-5px) rotate(5deg) scale(1.1) !important;
+box-shadow: 0 8px 20px rgba(106, 44, 190, 0.6) !important;
+}
+.nav-item:hover {
+transform: translateY(-5px) scale(1.1) !important;
+box-shadow: 0 5px 15px rgba(142, 94, 227, 0.5) !important;
+}
+.lang-btn:hover {
+transform: translateY(-2px) !important;
+box-shadow: 0 5px 15px rgba(142, 94, 227, 0.7) !important;
+}
+.language-switcher {
+display: flex;
+gap: 10px;
+}
+.lang-btn {
+background: rgba(45, 11, 77, 0.5);
+border: 1px solid var(--light-purple);
+color: var(--text-color);
+padding: 8px 15px;
+border-radius: 20px;
+cursor: pointer;
+transition: all 0.3s ease;
+backdrop-filter: blur(5px);
+}
+.lang-btn.active {
+background: var(--gradient);
+box-shadow: 0 0 10px rgba(142, 94, 227, 0.5);
+}
+.lang-btn:hover {
+transform: translateY(-2px);
+box-shadow: 0 5px 15px rgba(142, 94, 227, 0.7);
+}
+.hero {
+min-height: 100vh;
+display: flex;
+align-items: center;
+position: relative;
+padding: 100px 0;
+overflow: hidden;
+}
+.hero::before {
+content: '';
+position: absolute;
+top: -50%;
+right: -20%;
+width: 600px;
+height: 600px;
+background: radial-gradient(circle, var(--vibrant-purple) 0%, transparent 70%);
+opacity: 0.2;
+border-radius: 50%;
+z-index: -1;
+animation: pulse 8s infinite alternate;
+}
+.hero-content {
+max-width: 800px;
+position: relative;
+z-index: 2;
+}
+.hero h1 {
+font-size: 4.5rem;
+margin-bottom: 20px;
+background: linear-gradient(to right, #fff, var(--lighter-purple));
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+line-height: 1.1;
+animation: fadeInUp 1s ease;
+}
+.hero p {
+font-size: 1.5rem;
+margin-bottom: 40px;
+color: var(--light-text);
+animation: fadeInUp 1s ease 0.2s forwards;
+opacity: 0;
+}
+.section {
+padding: 120px 0;
+position: relative;
+}
+.section-title {
+font-size: 3rem;
+margin-bottom: 80px;
+position: relative;
+display: inline-block;
+text-align: center;
+width: 100%;
+}
+.section-title::after {
+content: '';
+position: absolute;
+bottom: -20px;
+left: 50%;
+transform: translateX(-50%);
+width: 100px;
+height: 5px;
+background: var(--gradient);
+border-radius: 10px;
+}
+.about-content {
+display: grid;
+grid-template-columns: 1fr;
+gap: 40px;
+align-items: center;
+}
+.about-text {
+font-size: 1.2rem;
+color: var(--light-text);
+text-align: center;
+}
+.about-buttons {
+display: flex;
+justify-content: center;
+gap: 20px;
+margin-top: 40px;
+flex-wrap: wrap;
+}
+.influencers {
+background-image:
+radial-gradient(circle at 20% 80%, rgba(106, 44, 190, 0.1) 0%, transparent 30%),
+radial-gradient(circle at 80% 20%, rgba(74, 27, 140, 0.1) 0%, transparent 30%);
+}
+.influencers-grid {
+display: grid;
+grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+gap: 25px;
+}
+.influencer-card {
+background: rgba(45, 11, 77, 0.4);
+padding: 30px;
+border-radius: 20px;
+text-align: center;
+transition: all 0.3s ease;
+backdrop-filter: blur(5px);
+border: 1px solid rgba(142, 94, 227, 0.2);
+position: relative;
+overflow: hidden;
+}
+.influencer-card::before {
+content: '';
+position: absolute;
+top: -50%;
+left: -50%;
+width: 200%;
+height: 200%;
+background: linear-gradient(to bottom right, transparent, rgba(142, 94, 227, 0.1), transparent);
+transform: rotate(45deg);
+transition: 0.5s;
+z-index: -1;
+}
+.influencer-card:hover {
+transform: translateY(-10px) scale(1.02);
+box-shadow: 0 15px 30px rgba(74, 27, 140, 0.3);
+border-color: rgba(142, 94, 227, 0.4);
+}
+.influencer-card:hover::before {
+animation: shine 1.5s forwards;
+}
+.influencer-name {
+font-size: 1.5rem;
+margin-bottom: 15px;
+font-weight: 600;
+}
+.influencer-followers {
+color: var(--lighter-purple);
+font-weight: 500;
+font-size: 1.1rem;
+}
+.cases {
+background-image:
+radial-gradient(circle at 70% 30%, rgba(106, 44, 190, 0.1) 0%, transparent 30%),
+radial-gradient(circle at 30% 70%, rgba(74, 27, 140, 0.1) 0%, transparent 30%);
+padding: 100px 0;
+}
+.cases-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+gap: 40px;
+margin-top: 60px;
+}
+.case-card {
+background: rgba(45, 11, 77, 0.4);
+border-radius: 20px;
+overflow: hidden;
+backdrop-filter: blur(5px);
+border: 1px solid rgba(142, 94, 227, 0.2);
+transition: all 0.4s ease;
+text-align: center;
+display: flex;
+flex-direction: column;
+height: 600px;
+}
+.case-card:hover {
+transform: translateY(-10px);
+box-shadow: 0 15px 30px rgba(74, 27, 140, 0.3);
+}
+.video-preview {
+position: relative;
+height: 250px;
+overflow: hidden;
+cursor: pointer;
+flex-shrink: 0;
+}
+.video-preview img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+transition: transform 0.3s ease;
+}
+.video-preview:hover img {
+transform: scale(1.05);
+}
+.play-button {
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+width: 70px;
+height: 70px;
+background: rgba(255, 255, 255, 0.8);
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+transition: all 0.3s ease;
+}
+.play-button i {
+color: var(--vibrant-purple);
+font-size: 24px;
+margin-left: 4px;
+}
+.video-preview:hover .play-button {
+background: rgba(255, 255, 255, 1);
+transform: translate(-50%, -50%) scale(1.1);
+}
+.case-content {
+padding: 25px;
+display: flex;
+flex-direction: column;
+flex-grow: 1;
+}
+.case-title {
+font-size: 1.4rem;
+margin-bottom: 15px;
+color: var(--text-color);
+}
+.case-description {
+color: var(--light-text);
+line-height: 1.6;
+margin-bottom: 15px;
+font-size: 1rem;
+flex-grow: 1;
+}
+.case-buttons {
+display: flex;
+flex-direction: column;
+gap: 10px;
+margin-top: auto;
+}
+.watch-button {
+width: 100%;
+justify-content: center;
+min-height: 50px;
+display: flex;
+align-items: center;
+}
+.channel-badge {
+display: inline-block;
+background: var(--gradient);
+color: white;
+padding: 4px 12px;
+border-radius: 20px;
+font-size: 0.8rem;
+font-weight: 600;
+margin-bottom: 10px;
+text-transform: uppercase;
+letter-spacing: 0.5px;
+}
+.founder {
+text-align: center;
+background-image:
+radial-gradient(circle at 70% 30%, rgba(106, 44, 190, 0.1) 0%, transparent 30%);
+}
+.founder-content {
+max-width: 900px;
+margin: 0 auto;
+}
+.founder-stats {
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+gap: 25px;
+margin: 50px 0;
+}
+.founder-stat {
+background: rgba(45, 11, 77, 0.4);
+padding: 30px;
+border-radius: 20px;
+backdrop-filter: blur(5px);
+border: 1px solid rgba(142, 94, 227, 0.2);
+transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+position: relative;
+overflow: hidden;
+}
+.founder-stat:hover {
+transform: translateY(-10px) scale(1.03);
+box-shadow: 0 15px 30px rgba(74, 27, 140, 0.4);
+}
+.founder-stat::before {
+content: '';
+position: absolute;
+top: 0;
+left: -100%;
+width: 100%;
+height: 100%;
+background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+transition: 0.5s;
+}
+.founder-stat:hover::before {
+left: 100%;
+}
+.social-links {
+display: flex;
+justify-content: center;
+gap: 20px;
+margin-top: 40px;
+}
+.contact {
+background: rgba(45, 11, 77, 0.2);
+backdrop-filter: blur(10px);
+border-radius: 30px;
+padding: 80px;
+margin: 80px 0;
+text-align: center;
+border: 1px solid rgba(142, 94, 227, 0.2);
+}
+.contact-info {
+font-size: 1.3rem;
+margin-bottom: 30px;
+color: var(--light-text);
+}
+.highlight {
+color: var(--lighter-purple);
+font-weight: 600;
+}
+footer {
+background: var(--deep-purple);
+padding: 50px 0;
+text-align: center;
+margin-top: 100px;
+}
+.influencers-grid a {
+text-decoration: none;
+color: inherit;
+display: block;
+}
+.influencer-card {
+cursor: pointer;
+}
+.influencer-card:hover {
+cursor: pointer;
+}
+.padding: 100px 0; {
+background-image:
+radial-gradient(circle at 20% 50%, rgba(106, 44, 190, 0.1) 0%, transparent 30%),
+radial-gradient(circle at 80% 80%, rgba(74, 27, 140, 0.1) 0%, transparent 30%);
+}
+.results-content {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 60px;
+align-items: center;
+}
+.results-text {
+margin-bottom: 30px;
+}
+.results-text h2 {
+font-size: 2.5rem;
+margin-bottom: 20px;
+background: linear-gradient(to right, #fff, var(--lighter-purple));
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+}
+.results-list {
+list-style: none;
+margin: 25px 0;
+}
+.results-list li {
+margin-bottom: 15px;
+padding-left: 30px;
+position: relative;
+font-size: 1.1rem;
+}
+.results-list li:before {
+content: "→";
+position: absolute;
+left: 0;
+color: var(--light-purple);
+font-weight: bold;
+}
+
+.platforms-info {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
+
+.platform-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    background: rgba(45, 11, 77, 0.4);
+    padding: 15px 20px;
+    border-radius: 15px;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(142, 94, 227, 0.2);
+    transition: all 0.3s ease;
+    min-width: 100px;
+}
+
+.platform-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(106, 44, 190, 0.3);
+}
+
+.platform-item i {
+    font-size: 2rem;
+    margin-bottom: 5px;
+}
+
+.platform-item:nth-child(1) i {
+    color: #FF0000; /* YouTube red */
+}
+
+.platform-item:nth-child(2) i {
+    color: #E1306C; /* Instagram pink */
+}
+
+.platform-item:nth-child(3) i {
+    color: #000000; /* TikTok black */
+}
+
+.platform-item span {
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+/* Улучшения для графика */
+.chart-line-path {
+    fill: none;
+    stroke: var(--light-purple);
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    transition: stroke-dashoffset 2s ease-in-out;
+}
+
+.chart-point {
+    fill: var(--vibrant-purple);
+    stroke: white;
+    stroke-width: 2;
+    transition: all 0.3s ease;
+    opacity: 0;
+}
+
+.chart-container.animated .chart-line-path {
+    stroke-dashoffset: 0;
+}
+
+.chart-container.animated .chart-point {
+    opacity: 1;
+}
+
+/* Улучшенный график */
+.chart-container {
+background: rgba(45, 11, 77, 0.4);
+border-radius: 15px;
+padding: 25px;
+backdrop-filter: blur(5px);
+border: 1px solid rgba(142, 94, 227, 0.2);
+position: relative;
+overflow: hidden;
+}
+.chart-placeholder {
+height: 250px;
+position: relative;
+overflow: hidden;
+}
+.chart-line {
+position: absolute;
+bottom: 30px;
+left: 40px;
+right: 20px;
+height: 200px;
+} 
+.chart-point:hover {
+fill: white;
+stroke: var(--vibrant-purple);
+r: 6;
+}
+.chart-grid-line {
+stroke: rgba(142, 94, 227, 0.2);
+stroke-width: 1;
+}
+.chart-label {
+position: absolute;
+font-size: 10px;
+color: var(--light-text);
+}
+.chart-x-label {
+bottom: 0;
+transform: translateX(-50%);
+}
+.chart-y-label {
+left: 0;
+transform: translateY(50%);
+}
+.sales-box {
+background: var(--gradient);
+border-radius: 20px;
+padding: 35px 25px;
+text-align: center;
+box-shadow: 0 15px 35px rgba(106, 44, 190, 0.4);
+position: relative;
+overflow: hidden;
+border: 1px solid rgba(255, 255, 255, 0.1);
+transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+margin-top: 40px;
+max-width: 400px;
+margin-left: auto;
+margin-right: 20px;
+}
+.sales-box:hover {
+transform: translateY(-5px) scale(1.03);
+box-shadow: 0 20px 40px rgba(106, 44, 190, 0.6);
+}
+.sales-box::before {
+content: '';
+position: absolute;
+top: -50%;
+left: -50%;
+width: 200%;
+height: 200%;
+background: linear-gradient(to bottom right, transparent, rgba(255, 255, 255, 0.15), transparent);
+transform: rotate(45deg);
+animation: shine 3s infinite;
+}
+.sales-number {
+font-size: 2.8rem;
+font-weight: 800;
+margin-bottom: 12px;
+display: flex;
+align-items: center;
+justify-content: center;
+text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+.sales-up {
+color: #4ade80;
+margin-left: 12px;
+font-size: 1.8rem;
+animation: pulse 2s infinite;
+}
+.sales-label {
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 10px;
+font-size: 1.2rem;
+font-weight: 600;
+}
+.money-icon {
+color: gold;
+font-size: 1.5rem;
+position: relative;
+animation: float 3s ease-in-out infinite;
+}
+.money-icon::before {
+content: '₽';
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+font-size: 0.7rem;
+font-weight: bold;
+color: #000;
+}
+.social-icons {
+display: flex;
+justify-content: center;
+gap: 20px;
+margin-top: 40px;
+flex-wrap: wrap;
+justify-content: center;
+}
+.social-icon {
+width: 60px;
+height: 60px;
+display: flex;
+align-items: center;
+justify-content: center;
+background: var(--gradient);
+border-radius: 50%;
+color: white;
+font-size: 1.5rem;
+transition: all 0.3s ease;
+text-decoration: none;
+box-shadow: 0 5px 15px rgba(106, 44, 190, 0.3);
+position: relative;
+overflow: hidden;
+}
+.social-icon:hover {
+transform: translateY(-5px) scale(1.1);
+box-shadow: 0 8px 20px rgba(106, 44, 190, 0.5);
+}
+.social-icon::before {
+content: '';
+position: absolute;
+top: 0;
+left: -100%;
+width: 100%;
+height: 100%;
+background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+transition: 0.5s;
+}
+.social-icon:hover::before {
+left: 100%;
+}
+.social-icon.youtube {
+background: linear-gradient(135deg, #FF0000, #CC0000);
+}
+.social-icon.instagram {
+background: linear-gradient(135deg, #833AB4, #FD1D1D, #FCAF45);
+}
+.social-icon.tiktok {
+background: linear-gradient(135deg, #000000, #25F4EE, #FE2C55);
+}
+/* Адаптивность для новой секции */
+@media (max-width: 992px) {
+.results-content {
+grid-template-columns: 1fr;
+gap: 40px;
+}
+.sales-box {
+margin-left: 0;
+margin-top: 30px;
+}
+}
+@media (max-width: 576px) {
+.results-text h2 {
+font-size: 2rem;
+}
+.sales-number {
+font-size: 2rem;
+}
+.social-icon {
+width: 50px;
+height: 50px;
+font-size: 1.3rem;
+}
+}
+.sales-box::before {
+content: '';
+position: absolute;
+top: -50%;
+left: -50%;
+width: 200%;
+height: 200%;
+background: linear-gradient(to bottom right, transparent, rgba(255, 255, 255, 0.1), transparent);
+transform: rotate(45deg);
+animation: shine 3s infinite;
+}
+.sales-number {
+font-size: 2.5rem;
+font-weight: 700;
+margin-bottom: 10px;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+.sales-up {
+color: #4ade80;
+margin-left: 10px;
+font-size: 1.5rem;
+}
+.sales-label {
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 8px;
+font-size: 1.1rem;
+}
+.money-icon {
+color: gold;
+font-size: 1.3rem;
+}
+/* Адаптивность для новой секции */
+@media (max-width: 992px) {
+.results-content {
+grid-template-columns: 1fr;
+gap: 40px;
+}
+.sales-box {
+margin-left: 0;
+margin-top: 30px;
+}
+}
+@media (max-width: 576px) {
+.results-text h2 {
+font-size: 2rem;
+}
+.sales-number {
+font-size: 2rem;
+}
+.social-icon {
+width: 40px;
+height: 40px;
+font-size: 1.1rem;
+}
+}
+/* Анимации */
+@keyframes float {
+0%, 100% { transform: translateY(0); }
+50% { transform: translateY(-5px); }
+}
+@keyframes chartGrow {
+from { transform: scaleY(0); }
+to { transform: scaleY(1); }
+}
+.social-options {
+display: none;
+flex-direction: column;
+gap: 15px;
+margin-top: 20px;
+animation: fadeIn 0.5s ease;
+}
+.social-option {
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 12px;
+background: var(--gradient);
+color: white;
+padding: 15px 25px;
+border-radius: 50px;
+text-decoration: none;
+font-weight: 600;
+transition: all 0.3s ease;
+}
+.social-option:hover {
+transform: translateY(-3px);
+box-shadow: 0 8px 20px rgba(106, 44, 190, 0.6);
+}
+.social-option.telegram {
+background: linear-gradient(135deg, #2AABEE, #229ED9);
+}
+.social-option.instagram {
+background: linear-gradient(135deg, #833AB4, #FD1D1D, #FCAF45);
+}
+@keyframes fadeIn {
+from { opacity: 0; transform: translateY(10px); }
+to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeInUp {
+from {
+opacity: 0;
+transform: translateY(30px);
+}
+to {
+opacity: 1;
+transform: translateY(0);
+}
+}
+@keyframes pulse {
+0% {
+transform: scale(1);
+opacity: 0.2;
+}
+50% {
+transform: scale(1.1);
+opacity: 0.3;
+}
+to {
+transform: scale(1);
+opacity: 0.2;
+}
+}
+@keyframes shine {
+0% {
+left: -50%;
+}
+to {
+left: 100%;
+}
+}
+.fade-in {
+opacity: 0;
+transform: translateY(50px);
+transition: all 0.8s ease;
+}
+.fade-in.visible {
+opacity: 1;
+transform: translateY(0);
+}
+@media (max-width: 1200px) {
+.side-nav {
+left: 10px;
+}
+.hero h1 {
+font-size: 3.5rem;
+}
+.cases-grid {
+grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+}
+@media (max-width: 992px) {
+.about-content {
+grid-template-columns: 1fr;
+}
+.founder-stats {
+grid-template-columns: 1fr;
+}
+.side-nav {
+bottom: 20px;
+top: auto;
+left: 50%;
+transform: translateX(-50%);
+flex-direction: row;
+width: auto;
+}
+.nav-tooltip {
+top: -40px;
+left: 50%;
+transform: translateX(-50%);
+}
+.nav-item:hover .nav-tooltip {
+top: -50px;
+}
+.cases-grid {
+grid-template-columns: 1fr;
+}
+}
+@media (max-width: 1200px) {
+.cases-grid {
+grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+}
+@media (max-width: 992px) {
+.cases-grid {
+grid-template-columns: 1fr;
+}
+}
+@media (max-width: 768px) {
+.case-card {
+height: auto;
+min-height: 550px;
+}
+.video-preview {
+height: 200px;
+}
+.case-title {
+font-size: 1.2rem;
+}
+.play-button {
+width: 50px;
+height: 50px;
+}
+}
+@media (max-width: 576px) {
+.case-content {
+padding: 20px;
+}
+.case-card {
+min-height: 500px;
+}
+}
+@media (max-width: 768px) {
+.hero h1 {
+font-size: 2.8rem;
+}
+.hero p {
+font-size: 1.2rem;
+}
+.section-title {
+font-size: 2.5rem;
+}
+.influencers-grid {
+grid-template-columns: 1fr;
+}
+.contact {
+padding: 40px 20px;
+}
+.stat-number {
+font-size: 2rem;
+}
+.about-buttons {
+flex-direction: column;
+align-items: center;
+}
+.case-title {
+font-size: 1.2rem;
+}
+.play-button {
+width: 50px;
+height: 50px;
+}
+}
+@media (max-width: 576px) {
+.container {
+padding: 0 20px;
+}
+.hero h1 {
+font-size: 2.2rem;
+}
+.section {
+padding: 80px 0;
+}
+.social-links {
+flex-wrap: wrap;
+}
+.header-content {
+flex-direction: column;
+gap: 20px;
+}
+.about-buttons {
+gap: 15px;
+}
+.social-button, .watch-button {
+padding: 12px 25px;
+font-size: 0.9rem;
+}
+.case-content {
+padding: 20px;
+}
+}
+@media (max-width: 768px) {
+body {
+background-color: var(--dark-purple);
+background-image:
+radial-gradient(circle at 10% 20%, rgba(74, 27, 140, 0.1) 0%, transparent 15%),
+radial-gradient(circle at 90% 60%, rgba(106, 44, 190, 0.05) 0%, transparent 15%);
+}
+.hero::before {
+width: 300px;
+height: 300px;
+top: -20%;
+right: -10%;
+opacity: 0.15;
+}
+.influencer-card, .founder-stat, .case-card {
+background: rgba(45, 11, 77, 0.6);
+}
+}
+@media (max-width: 480px) {
+.hero h1 {
+font-size: 2rem;
+}
+.hero p {
+font-size: 1rem;
+}
+.section-title {
+font-size: 2rem;
+}
+.about-text {
+font-size: 1rem;
+}
+.contact {
+padding: 30px 15px;
+}
+.contact-info {
+font-size: 1.1rem;
+}
+}
+</style>
+</head>
+<body>
+<!-- Боковая навигация -->
+<nav class="side-nav">
+<div class="nav-item active" data-section="hero">
+<i class="fas fa-home"></i>
+<span class="nav-tooltip" data-lang-ru="Главная" data-lang-en="Home">Главная</span>
+</div>
+<div class="nav-item" data-section="results">
+<i class="fas fa-chart-line"></i>
+<span class="nav-tooltip" data-lang-ru="Результаты" data-lang-en="Results">Результаты</span>
+</div>
+<div class="nav-item" data-section="cases">
+<i class="fas fa-video"></i>
+<span class="nav-tooltip" data-lang-ru="Кейсы" data-lang-en="Cases">Кейсы</span>
+</div>
+<div class="nav-item" data-section="founder">
+<i class="fas fa-crown"></i>
+<span class="nav-tooltip" data-lang-ru="Основатель" data-lang-en="Founder">Основатель</span>
+</div>
+</nav>
+<header>
+<div class="container header-content">
+<a href="#" class="logo">PROPAGANDA AGENCY</a>
+<div class="header-right">
+<a href="questionnaire.html" class="apply-button" data-lang-ru="Оставить заявку" data-lang-en="Apply Now">Оставить заявку</a>
+<div class="language-switcher">
+<button class="lang-btn active" data-lang="ru">RU</button>
+<button class="lang-btn" data-lang="en">EN</button>
+</div>
+</div>
+</div>
+</header>
+<section id="hero" class="hero">
+<div class="container hero-content">
+<h1 data-lang-ru="PROPAGANDA AGENCY" data-lang-en="PROPAGANDA AGENCY">PROPAGANDA AGENCY</h1>
+<p data-lang-ru="Делаем людей и их проекты известными. Умножим твой чистый доход В РАЗЫ с помощью соцсетей и личного бренда."
+data-lang-en="We make people and their projects famous. Multiply your net income MANY TIMES with the help of social media and personal branding.">
+Делаем людей и их проекты известными. Умножим твой чистый доход В РАЗЫ с помощью соцсетей и личного бренда.
+</p>
+<a href="questionnaire.html" class="cta-button" data-lang-ru="ЗАПУСТИТЬ" data-lang-en="LAUNCH">ЗАПУСТИТЬ</a>
+</div>
+</section>
+<section id="results" class="section results">
+    <div class="container">
+        <div class="results-content">
+            <div>
+                <div class="results-text">
+                    <h2 data-lang-ru="Мы предлагаем самые эффективные способы развития ваших проектов в медиа"
+                        data-lang-en="We offer the most effective ways to develop your projects in media">
+                        Мы предлагаем самые эффективные способы развития ваших проектов в медиа
+                    </h2>
+                    <ul class="results-list">
+                        <li data-lang-ru="от Продюссирования и монтажа"
+                            data-lang-en="from Production and editing">
+                            от Продюссирования и монтажа
+                        </li>
+                        <li data-lang-ru="до личного Запуска высокодоходных продуктов"
+                            data-lang-en="to personal Launch of high-income products">
+                            до личного Запуска высокодоходных продуктов
+                        </li>
+                    </ul>
+                </div>
+                <div class="chart-container fade-in">
+                    <div class="chart-placeholder">
+                        <svg class="chart-line" viewBox="0 0 500 200" preserveAspectRatio="none">
+                            <!-- Grid lines -->
+                            <line class="chart-grid-line" x1="0" y1="0" x2="500" y2="0" />
+                            <line class="chart-grid-line" x1="0" y1="50" x2="500" y2="50" />
+                            <line class="chart-grid-line" x1="0" y1="100" x2="500" y2="100" />
+                            <line class="chart-grid-line" x1="0" y1="150" x2="500" y2="150" />
+                            <line class="chart-grid-line" x1="0" y1="200" x2="500" y2="200" />
+                            <!-- Data line -->
+                            <path class="chart-line-path" d="M0,180 C100,150 150,100 200,120 C250,140 300,80 350,50 C400,20 450,40 500,10" />
+                            <!-- Data points -->
+                            <circle class="chart-point" cx="0" cy="180" r="4" />
+                            <circle class="chart-point" cx="100" cy="150" r="4" />
+                            <circle class="chart-point" cx="200" cy="120" r="4" />
+                            <circle class="chart-point" cx="300" cy="80" r="4" />
+                            <circle class="chart-point" cx="400" cy="20" r="4" />
+                            <circle class="chart-point" cx="500" cy="10" r="4" />
+                        </svg>
+                    </div>
+                    <div class="platforms-info">
+                        <div class="platform-item">
+                            <i class="fab fa-youtube"></i>
+                            <span data-lang-ru="YouTube" data-lang-en="YouTube">YouTube</span>
+                        </div>
+                        <div class="platform-item">
+                            <i class="fab fa-instagram"></i>
+                            <span data-lang-ru="Instagram" data-lang-en="Instagram">Instagram</span>
+                        </div>
+                        <div class="platform-item">
+                            <i class="fab fa-tiktok"></i>
+                            <span data-lang-ru="TikTok" data-lang-en="TikTok">TikTok</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="sales-box fade-in">
+                <div class="sales-number">
+                    5,876,400₽ <span class="sales-up"><i class="fas fa-arrow-up"></i> </span>
+                </div>
+                <div class="sales-label">
+                    <i class="fas fa-money-bill-wave money-icon"></i>
+                    <span data-lang-ru="общие продажи" data-lang-en="total sales">общие продажи</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section id="cases" class="section cases">
+<div class="container">
+<h2 class="section-title fade-in" data-lang-ru="Наши кейсы" data-lang-en="Our Cases">Наши кейсы</h2>
+<div class="cases-grid">
+<div class="case-card fade-in">
+<div class="video-preview" onclick="window.open('https://youtu.be/laFO-6ejEso?si=SQh33DeQBhiSC_7V', '_blank')">
+<img src="photo_2023-11-29_17-08-06.jpg" alt="Превью видео кейса">
+<div class="play-button">
+<i class="fas fa-play"></i>
+</div>
+</div>
+<div class="case-content">
+<span class="channel-badge" data-lang-ru="Видео" data-lang-en="Video">Видео</span>
+<h3 class="case-title" data-lang-ru="КАК ПОГИБ КУЛЬТ САМОРАЗВИТИЯ" data-lang-en="HOW THE SELF-DEVELOPMENT CULT DIED">КАК ПОГИБ КУЛЬТ САМОРАЗВИТИЯ</h3>
+<p class="case-description" data-lang-ru="Монтаж был выполнен PROPAGANDA AGENCY" data-lang-en="Editing was done by PROPAGANDA AGENCY">Монтаж был выполнен PROPAGANDA AGENCY</p>
+<p class="case-description" data-lang-ru="Результат: 750 000 просмотров" data-lang-en="Result: 750,000 views">Результат: 750 000 просмотров</p>
+<div class="case-buttons">
+<a href="https://youtu.be/laFO-6ejEso?si=SQh33DeQBhiSC_7V" target="_blank" class="watch-button">
+<i class="fas fa-play-circle"></i>
+<span data-lang-ru="Смотреть видео" data-lang-en="Watch Video">Смотреть видео</span>
+</a>
+</div>
+</div>
+</div>
+<div class="case-card fade-in">
+<div class="video-preview" onclick="window.open('https://youtu.be/6-C8dFMgxg4?si=5kGJ9fUIBi_vqkmF')">
+<img src="photo_2025-08-27_23-53-43.jpg" alt="Превью видео кейса">
+<div class="play-button">
+<i class="fas fa-play"></i>
+</div>
+</div>
+<div class="case-content">
+<span class="channel-badge" data-lang-ru="Видео" data-lang-en="Video">Видео</span>
+<h3 class="case-title" data-lang-ru="Это видео найдет тебя, когда прийдет время" data-lang-en="This Video Will Find You When the Time Comes">Это видео найдет тебя, когда прийдет время</h3>
+<p class="case-description" data-lang-ru="Монтаж был выполнен PROPAGANDA AGENCY" data-lang-en="Editing was done by PROPAGANDA AGENCY">Монтаж был выполнен PROPAGANDA AGENCY</p>
+<p class="case-description" data-lang-ru="Результат: 700 000 просмотров" data-lang-en="Result: 700,000 views">Результат: 700 000 просмотров</p>
+<div class="case-buttons">
+<a href="https://youtu.be/6-C8dFMgxg4?si=k5d-DvEIFWYJFSiT" target="_blank" class="watch-button">
+<i class="fas fa-play-circle"></i>
+<span data-lang-ru="Смотреть видео" data-lang-en="Watch Video">Смотреть видео</span>
+</a>
+</div>
+</div>
+</div>
+<div class="case-card fade-in">
+<div class="video-preview" onclick="window.open('https://www.youtube.com/@kolyvanovmikhail/videos')">
+<img src="photo_2025-08-27_23-54-39.jpg" alt="Превью видео кейса">
+</div>
+<div class="case-content">
+<span class="channel-badge" data-lang-ru="Канал" data-lang-en="Channel">Канал</span>
+<h3 class="case-title" data-lang-ru="Kolyvanov" data-lang-en="Kolyvanov">Kolyvanov</h3>
+<p class="case-description" data-lang-ru="Монтаж был выполнен PROPAGANDA AGENCY" data-lang-en="Editing was done by PROPAGANDA AGENCY">Монтаж был выполнен PROPAGANDA AGENCY</p>
+<p class="case-description" data-lang-ru="Результат: 3 000 000 просмотров" data-lang-en="Result: 3,000,000 views">Результат: 3 000 000 просмотров</p>
+<div class="case-buttons">
+<a href="https://www.youtube.com/@kolyvanovmikhail/videos" target="_blank" class="watch-button">
+<i class="fas fa-external-link-alt"></i>
+<span data-lang-ru="Перейти на канал" data-lang-en="Go to Channel">Перейти на канал</span>
+</a>
+</div>
+</div>
+</div>
+<div class="case-card fade-in">
+<div class="video-preview" onclick="window.open('https://www.youtube.com/@prodsimon./videos')">
+<img src="photo_2025-08-28_00-34-34.jpg" alt="Превью видео кейса">
+</div>
+<div class="case-content">
+<span class="channel-badge" data-lang-ru="Канал" data-lang-en="Channel">Канал</span>
+<h3 class="case-title" data-lang-ru="Симон" data-lang-en="Simon">Симон</h3>
+<p class="case-description" data-lang-ru="Все ролики были смонтированы PROPAGANDA AGENCY + полное продюсирование" data-lang-en="All videos were edited by PROPAGANDA AGENCY + full production">Все ролики были смонтированы PROPAGANDA AGENCY + полное продюсирование</p>
+<p class="case-description" data-lang-ru="Результат: 1 300 000 просмотров" data-lang-en="Result: 1,300,000 views">Результат: 1 300 000 просмотров</p>
+<p class="case-description" data-lang-ru="Доход: 5 000 000 Рублей" data-lang-en="Revenue: 5,000,000 Rubles">Доход: 5 000 000 Рублей</p>
+<div class="case-buttons">
+<a href="https://www.youtube.com/@prodsimon./videos" target="_blank" class="watch-button">
+<i class="fas fa-external-link-alt"></i>
+<span data-lang-ru="Перейти на канал" data-lang-en="Go to Channel">Перейти на канал</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="founder" class="section founder">
+<div class="container">
+<h2 class="section-title fade-in" data-lang-ru="Основатель" data-lang-en="Founder">Основатель</h2>
+<div class="founder-content">
+<h3 class="fade-in" data-lang-ru="Симон (CEO PROPAGANDA AGENCY)" data-lang-en="Simon (CEO PROPAGANDA AGENCY)">Simon (CEO PROPAGANDA AGENCY)</h3>
+<div class="founder-stats">
+<div class="founder-stat fade-in">
+<div class="stat-number">4,500,000+ руб</div>
+<div data-lang-ru="со своего обучения и медиа-бизнеса" data-lang-en="from his education and media business">со своего обучения и медиа-бизнеса</div>
+</div>
+<div class="founder-stat fade-in">
+<div class="stat-number">8,000+</div>
+<div data-lang-ru="аудитории в личном телеграм канале" data-lang-en="audience in personal Telegram channel">аудитории в личном телеграм канале</div>
+</div>
+<div class="founder-stat fade-in">
+<div class="stat-number">2,100,000+</div>
+<div data-lang-ru="просмотров с 2х каналов на youtube" data-lang-en="views from 2 YouTube channels">просмотров с 2х каналов на youtube</div>
+</div>
+</div>
+<div class="social-links">
+<a href="https://youtube.com/@prodsimon.?si=dYbPh7jg0X_R4lWz" class="social-link fade-in"><i class="fab fa-youtube"></i></a>
+<a href="https://www.instagram.com/simongelf?igsh=MW1yYnFsMHF4ZnloNw==" class="social-link fade-in"><i class="fab fa-instagram"></i></a>
+<a href="https://t.me/prodsimon" class="social-link fade-in"><i class="fab fa-telegram"></i></a>
+</div>
+</div>
+</div>
+</section>
+ <script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Функция для проверки и создания favicon
+    function checkAndCreateFavicon() {
+        const faviconLink = document.querySelector('link[rel="icon"]');
+        if (!faviconLink) return;
+        
+        const img = new Image();
+        img.onerror = function() {
+            console.log('Favicon не найден, создаем fallback...');
+            createFallbackFavicon();
+        };
+        img.onload = function() {
+            console.log('Favicon загружен успешно');
+        };
+        
+        // Проверяем загрузку favicon
+        setTimeout(function() {
+            img.src = faviconLink.href;
+        }, 100);
+    }
+
+    function createFallbackFavicon() {
+        const canvas = document.createElement('canvas');
+        canvas.width = 64;
+        canvas.height = 64;
+        const ctx = canvas.getContext('2d');
+        
+        // Градиентный фон
+        const gradient = ctx.createLinearGradient(0, 0, 64, 64);
+        gradient.addColorStop(0, '#4a1b8c');
+        gradient.addColorStop(1, '#6a2cbe');
+        ctx.fillStyle = gradient;
+        ctx.fillRect(0, 0, 64, 64);
+        
+        // Буква P
+        ctx.fillStyle = '#ffffff';
+        ctx.font = 'bold 40px Arial';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText('P', 32, 32);
+        
+        // Создаем новый элемент link для favicon
+        const newFaviconLink = document.createElement('link');
+        newFaviconLink.rel = 'icon';
+        newFaviconLink.type = 'image/x-icon';
+        newFaviconLink.href = canvas.toDataURL('image/x-icon');
+        
+        // Удаляем старый и добавляем новый
+        const oldFavicon = document.querySelector('link[rel="icon"]');
+        if (oldFavicon) {
+            document.head.removeChild(oldFavicon);
+        }
+        document.head.appendChild(newFaviconLink);
+        
+        // Также создаем favicon для Apple devices
+        const appleTouchIcon = document.createElement('link');
+        appleTouchIcon.rel = 'apple-touch-icon';
+        appleTouchIcon.href = canvas.toDataURL('image/png');
+        document.head.appendChild(appleTouchIcon);
+    }
+
+    // Проверяем favicon
+    checkAndCreateFavicon();
+
+    const fadeElements = document.querySelectorAll('.fade-in');
+    let currentLang = 'ru';
+
+    const fadeInOptions = {
+        threshold: 0.3,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const fadeInObserver = new IntersectionObserver(function(entries, observer) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, fadeInOptions);
+
+    fadeElements.forEach(element => {
+        fadeInObserver.observe(element);
+    });
+
+    const navItems = document.querySelectorAll('.nav-item');
+    const sections = document.querySelectorAll('section');
+
+    function changeActiveNav() {
+        let currentSection = '';
+        
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            
+            if (pageYOffset >= (sectionTop - sectionHeight / 3)) {
+                currentSection = section.getAttribute('id');
+            }
+        });
+
+        navItems.forEach(item => {
+            item.classList.remove('active');
+            if (item.getAttribute('data-section') === currentSection) {
+                item.classList.add('active');
+            }
+        });
+    }
+
+    window.addEventListener('scroll', changeActiveNav);
+
+    function smoothScrollTo(targetId) {
+        const targetSection = document.getElementById(targetId);
+        if (!targetSection) return;
+        
+        const targetPosition = targetSection.offsetTop;
+        const startPosition = window.pageYOffset;
+        const distance = targetPosition - startPosition;
+        const duration = 1000;
+        let startTime = null;
+
+        function animation(currentTime) {
+            if (startTime === null) startTime = currentTime;
+            const timeElapsed = currentTime - startTime;
+            const run = easeInOutQuad(timeElapsed, startPosition, distance, duration);
+            window.scrollTo(0, run);
+            if (timeElapsed < duration) requestAnimationFrame(animation);
+        }
+
+        function easeInOutQuad(t, b, c, d) {
+            t /= d/2;
+            if (t < 1) return c/2*t*t + b;
+            t--;
+            return -c/2 * (t*(t-2) - 1) + b;
+        }
+
+        requestAnimationFrame(animation);
+    }
+
+    navItems.forEach(item => {
+        item.addEventListener('click', function() {
+            const targetId = this.getAttribute('data-section');
+            smoothScrollTo(targetId);
+        });
+    });
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            if (this.getAttribute('href') === '#contact' && this.id !== 'contact-button') {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                if (targetId) {
+                    smoothScrollTo(targetId);
+                }
+            }
+        });
+    });
+
+    // Правильная функция смены языка
+    function changeLanguage(lang) {
+        // Обновляем текст всех элементов с атрибутами data-lang
+        document.querySelectorAll('[data-lang-ru], [data-lang-en]').forEach(element => {
+            if (element.hasAttribute(`data-lang-${lang}`)) {
+                const text = element.getAttribute(`data-lang-${lang}`);
+                if (text) {
+                    element.textContent = text;
+                }
+            }
+        });
+
+        // Обновляем подсказки навигации
+        document.querySelectorAll('.nav-tooltip').forEach(tooltip => {
+            const text = tooltip.getAttribute(`data-lang-${lang}`);
+            if (text) {
+                tooltip.textContent = text;
+            }
+        });
+
+        // Обновляем кнопку "Оставить заявку"
+        const applyButton = document.querySelector('.apply-button');
+        if (applyButton && applyButton.hasAttribute(`data-lang-${lang}`)) {
+            const text = applyButton.getAttribute(`data-lang-${lang}`);
+            if (text) {
+                applyButton.textContent = text;
+            }
+        }
+
+        // Сохраняем текущий язык
+        currentLang = lang;
+    }
+
+    // Инициализация переключателя языка
+    const langButtons = document.querySelectorAll('.lang-btn');
+    langButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const lang = this.getAttribute('data-lang');
+            if (lang !== currentLang) {
+                // Обновляем активную кнопку языка
+                langButtons.forEach(btn => btn.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Меняем язык
+                changeLanguage(lang);
+            }
+        });
+    });
+
+    // Обработка кнопки "ЗАПУСТИТЬ"
+    document.querySelector('.cta-button').addEventListener('click', function(e) {
+        e.preventDefault();
+        // Перенаправляем на страницу с анкетой
+        window.location.href = 'questionnaire.html';
+    });
+});
+
+// Анимация появления графика
+function animateChart() {
+    const chartContainer = document.querySelector('.chart-container');
+    if (chartContainer) {
+        chartContainer.classList.add('animated');
+        
+        // Анимация точек
+        const points = document.querySelectorAll('.chart-point');
+        points.forEach((point, index) => {
+            setTimeout(() => {
+                point.style.transform = 'scale(1.2)';
+                setTimeout(() => {
+                    point.style.transform = 'scale(1)';
+                }, 300);
+            }, 2000 + index * 300);
+        });
+    }
+}
+
+// Запускаем анимацию при появлении секции
+const resultsObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            animateChart();
+            resultsObserver.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.3 });
+
+const resultsSection = document.getElementById('results');
+if (resultsSection) {
+    resultsObserver.observe(resultsSection);
+}
+                 </script>
+           </body>
+            </html>

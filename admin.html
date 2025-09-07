@@ -1,0 +1,298 @@
+  <!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --dark-bg: #0a0a12;
+            --card-bg: #12121f;
+            --card-border: #25253d;
+            --accent: #6a2cbe;
+            --accent-light: #8d5ee3;
+            --text: #ffffff;
+            --text-secondary: #b3b3cc;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: var(--dark-bg);
+            color: var(--text);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .admin-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px 0;
+        }
+        
+        .header h1 {
+            font-size: 2.2rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--text);
+            letter-spacing: 0.5px;
+        }
+        
+        .admin-actions {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            color: var(--text);
+            padding: 14px 28px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(106, 44, 190, 0.3);
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(106, 44, 190, 0.4);
+        }
+        
+        .applications-list {
+            display: grid;
+            gap: 20px;
+        }
+        
+        .application-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 25px;
+            border: 1px solid var(--card-border);
+            transition: all 0.3s ease;
+        }
+        
+        .application-card:hover {
+            border-color: var(--accent);
+            box-shadow: 0 5px 20px rgba(106, 44, 190, 0.15);
+        }
+        
+        .application-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--card-border);
+        }
+        
+        .application-date {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        .application-content {
+            display: grid;
+            gap: 18px;
+        }
+        
+        .question-item {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 8px;
+        }
+        
+        .question-text {
+            color: var(--text-secondary);
+            font-weight: 500;
+            font-size: 1rem;
+        }
+        
+        .answer-text {
+            color: var(--text);
+            background: rgba(106, 44, 190, 0.1);
+            padding: 14px 18px;
+            border-radius: 10px;
+            border-left: 3px solid var(--accent);
+            line-height: 1.5;
+        }
+        
+        .no-data {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--text-secondary);
+        }
+        
+        .no-data i {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: var(--accent);
+            opacity: 0.7;
+        }
+        
+        .no-data h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--text);
+        }
+        
+        @media (max-width: 768px) {
+            .application-header {
+                flex-direction: column;
+                gap: 10px;
+                align-items: flex-start;
+            }
+            
+            .btn {
+                width: 100%;
+                padding: 12px 20px;
+            }
+        }
+        
+        /* Анимации */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.5s ease forwards;
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-container">
+        <div class="header fade-in">
+            <h1>Анкеты клиентов</h1>
+        </div>
+        
+        <div class="admin-actions">
+            <button class="btn fade-in" onclick="loadApplications()">
+                <i class="fas fa-sync-alt"></i> Обновить
+            </button>
+        </div>
+        
+        <div class="applications-list" id="applicationsList">
+            <div class="no-data fade-in">
+                <i class="fas fa-inbox"></i>
+                <h3>Заявок пока нет</h3>
+                <p>Новые анкеты появятся здесь</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    // Функция для загрузки и отображения заявок
+    function loadApplications() {
+        // Пытаемся загрузить данные с сервера
+        fetch('http://localhost:3000/api/get-applications')
+        .then(response => response.json())
+        .then(applications => {
+            displayApplications(applications);
+        })
+        .catch(error => {
+            console.error('Ошибка при загрузке данных с сервера:', error);
+            // Если сервер недоступен, загружаем из localStorage
+            const localApplications = JSON.parse(localStorage.getItem('propaganda_applications') || '[]');
+            displayApplications(localApplications);
+        });
+    }
+    
+    // Функция для отображения заявок
+    function displayApplications(applications) {
+        const applicationsList = document.getElementById('applicationsList');
+        
+        if (applications.length === 0) {
+            applicationsList.innerHTML = `
+                <div class="no-data">
+                    <i class="fas fa-inbox"></i>
+                    <h3>Заявок пока нет</h3>
+                    <p>Новые анкеты появятся здесь</p>
+                </div>
+            `;
+            return;
+        }
+        
+        applicationsList.innerHTML = '';
+        
+        // Сортируем по дате (новые сверху)
+        applications.sort((a, b) => {
+            const dateA = new Date(a.timestamp || a.id);
+            const dateB = new Date(b.timestamp || b.id);
+            return dateB - dateA;
+        }).forEach(app => {
+            const appElement = document.createElement('div');
+            appElement.className = 'application-card fade-in';
+            
+            // Форматируем дату
+            const date = new Date(app.timestamp || app.id);
+            const formattedDate = date.toLocaleString('ru-RU', {
+                day: '2-digit',
+                month: '2-digit',
+                year: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+            
+            appElement.innerHTML = `
+                <div class="application-header">
+                    <div class="application-date">${formattedDate}</div>
+                </div>
+                <div class="application-content">
+                    <div class="question-item">
+                        <div class="question-text">Какие услуги тебя интересуют?</div>
+                        <div class="answer-text">${app.services || 'Не указано'}</div>
+                    </div>
+                    <div class="question-item">
+                        <div class="question-text">Ссылки на соцсети, которые хочешь продвигать</div>
+                        <div class="answer-text">${app.socialLinks || 'Не указаны'}</div>
+                    </div>
+                    <div class="question-item">
+                        <div class="question-text">Ссылка на твой телеграм для связи</div>
+                        <div class="answer-text">${app.telegram || 'Не указана'}</div>
+                    </div>
+                    <div class="question-item">
+                        <div class="question-text">Твоё имя</div>
+                        <div class="answer-text">${app.name || 'Не указано'}</div>
+                    </div>
+                </div>
+            `;
+            
+            applicationsList.appendChild(appElement);
+        });
+    }
+    
+    // Загружаем заявки при открытии страницы
+    document.addEventListener('DOMContentLoaded', loadApplications);
+    
+    // Автоматическое обновление каждые 30 секунд
+    setInterval(loadApplications, 30000);
+</script>
+</body>
+</html>
